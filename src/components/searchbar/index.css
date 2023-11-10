@@ -1,15 +1,21 @@
 .searchbar_wrapper {
   background-color: white;
-  width: 20rem;
+  width: 25rem;
   padding: 0 1rem;
   border-radius: 5px;
   display: flex;
   align-items: center;
   box-shadow: 6px 1px 5px 2px rgb(244 243 243);
+  height: fit-content;
 }
 .searchbar_wrapper input {
   background-color: transparent;
   border: none;
   padding: 1rem;
   outline: none;
+  color: #949493;
+  width: 100%;
+}
+.searchbar_wrapper svg {
+  color: #949493;
 }
