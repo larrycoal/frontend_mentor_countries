@@ -1,7 +1,6 @@
 import React from "react";
 import "./index.css";
 const index = ({ data }) => {
-  console.log(data);
   return (
     <div className="card_container">
       <img src={data.flags.svg} alt="germany flag" />

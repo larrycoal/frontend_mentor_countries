@@ -1,11 +1,11 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 import "./index.css";
-const index = () => {
+const index = ({onchange}) => {
   return (
     <div className="searchbar_wrapper">
       <BiSearch />
-      <input type="text" name="search" placeholder="search for a country..." />
+      <input type="text" name="search" placeholder="search for a country..."onChange={onchange} />
     </div>
   );
 };
