@@ -33,4 +33,7 @@
     flex-direction: column;
     gap: 2rem;
   }
+  .card_wrapper{
+    justify-content: center;
+  }
 }
