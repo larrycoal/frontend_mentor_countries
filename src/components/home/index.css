@@ -36,4 +36,7 @@
   .card_wrapper{
     justify-content: center;
   }
+  .home_wrapper{
+    padding: 10px;
+  }
 }
