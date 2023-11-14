@@ -8,6 +8,7 @@ const index = () => {
   const [showOpts, setShowOpts] = useState(false);
   const [countryData, setCountryData] = useState([]);
   const [searchParam, setSearchParam] = useState();
+  const [loading, setLoading] = useState(false);
   const handleFetchCountries = useCallback(async () => {
     try {
       const resp = await fetch(
@@ -20,31 +21,33 @@ const index = () => {
       console.log(error);
     }
   }, []);
-   const handleFilterBySearch = useCallback(async (param) => {
-     try {
-       const resp = await fetch(
-         `https://restcountries.com/v3.1/name/${param}`
-       ).then((data) => data.json());
-       console.log(resp)
-       if (resp) {
-         setCountryData(resp);
-       }else{
-        setCountryData([])
-       }
-     } catch (error) {
-       console.log(error);
-     }
-   }, []);
+  const handleFilterBySearch = useCallback(async (param) => {
+    try {
+      setLoading(true);
+      const resp = await fetch(
+        `https://restcountries.com/v3.1/name/${param}`
+      ).then((data) => data.json());
+      if (resp) {
+        setCountryData(resp);
+        setLoading(false);
+      } else {
+        setCountryData([]);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   useEffect(() => {
     handleFetchCountries();
   }, []);
 
   useEffect(() => {
     const debounceFunc = setTimeout(() => {
-      if(searchParam){
-        handleFilterBySearch(searchParam)
-      }else{
-        handleFetchCountries()
+      if (searchParam) {
+        handleFilterBySearch(searchParam);
+      } else {
+        handleFetchCountries();
       }
     }, 1000);
     return () => clearTimeout(debounceFunc);
@@ -56,26 +59,23 @@ const index = () => {
   const handleSearch = (e) => {
     setSearchParam(e.target.value);
   };
-  const handleFilter = async (filter) =>{
-      try {
-        const resp = await fetch(
-          `https://restcountries.com/v3.1/region/${filter}`
-        ).then((data) => data.json());
-        if (resp) {
-          setCountryData(resp);
-        } else {
-          setCountryData([]);
-        }
-      } catch (error) {
-        console.log(error);
+  const handleFilter = async (filter) => {
+    try {
+      const resp = await fetch(
+        `https://restcountries.com/v3.1/region/${filter}`
+      ).then((data) => data.json());
+      if (resp) {
+        setCountryData(resp);
+      } else {
+        setCountryData([]);
       }
-  }
-  return (
-    <div className="home_wrapper">
-      <div className="action_block">
-        <SearchBar onchange={handleSearch} />
-        <Filter setShowOpts={handleCloseOpt} showOpts={showOpts} onchange={handleFilter} />
-      </div>
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const ShowCountries = () => {
+    return (
       <div className="card_wrapper">
         {countryData.length ? (
           countryData.map((data) => <Card data={data} />)
@@ -85,6 +85,19 @@ const index = () => {
           </div>
         )}
       </div>
+    );
+  };
+  return (
+    <div className="home_wrapper">
+      <div className="action_block">
+        <SearchBar onchange={handleSearch} />
+        <Filter
+          setShowOpts={handleCloseOpt}
+          showOpts={showOpts}
+          onchange={handleFilter}
+        />
+      </div>
+        <ShowCountries />
     </div>
   );
 };
