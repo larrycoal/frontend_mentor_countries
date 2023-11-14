@@ -4,7 +4,7 @@
   box-shadow: 6px 1px 5px 2px rgb(244 243 243);
   border-radius: 5px;
   height: fit-content;
-
+  transition: all .5s ease-in;
 }
 .card_container img {
   width: 100%;
@@ -20,27 +20,33 @@
 .card_container .details h2 {
   margin: 1rem 0;
 }
-.card_container .details p{
-    padding: 5px 0;
+.card_container .details p {
+  padding: 5px 0;
 }
-.card_container .details p span:nth-child(1){
-    font-weight: bold;
+.card_container .details p span:nth-child(1) {
+  font-weight: bold;
+}
+.dark_mode-card {
+  background-color: rgb(40, 40, 40);
+  box-shadow: 6px 1px 5px 2px rgb(51, 49, 49);
+  color: white;
 }
 @media only screen and (max-width: 900px) {
-    .card_container{
-        width: 8rem;
-    }
-    .card_container img{
-        height: 70px;
-    }
-    .card_container .details{
-        padding: 5px;
-    }
-    .card_container .details h2{
-        margin: 5px 0;
-        font-size: 1rem;
-    }
-    .card_container .details p{
-        font-size: .7rem;
-    }
+  .card_container {
+    width: 8rem;
+    justify-content: center;
+  }
+  .card_container img {
+    height: 70px;
+  }
+  .card_container .details {
+    padding: 5px;
+  }
+  .card_container .details h2 {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+  .card_container .details p {
+    font-size: 0.7rem;
+  }
 }

@@ -5,7 +5,7 @@ import Loader from "../../utils/loading";
 import Card from "../card";
 import "./index.css";
 
-const index = () => {
+const index = ({ mode }) => {
   const [showOpts, setShowOpts] = useState(false);
   const [countryData, setCountryData] = useState([]);
   const [searchParam, setSearchParam] = useState();
@@ -80,7 +80,7 @@ const index = () => {
     return (
       <div className="card_wrapper">
         {countryData.length ? (
-          countryData.map((data,idx) => <Card key={idx} data={data} />)
+          countryData.map((data, idx) => <Card key={idx} data={data} mode={mode} />)
         ) : (
           <div className="error">
             <p>No country found</p>
@@ -90,13 +90,14 @@ const index = () => {
     );
   };
   return (
-    <div className="home_wrapper">
+    <div className={!mode ? "home_wrapper" : "dark_mode-home home_wrapper"}>
       <div className="action_block">
-        <SearchBar onchange={handleSearch} />
+        <SearchBar onchange={handleSearch} mode={mode} />
         <Filter
           setShowOpts={handleCloseOpt}
           showOpts={showOpts}
           onchange={handleFilter}
+          mode={mode}
         />
       </div>
       {loading && <Loader />}

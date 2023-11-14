@@ -7,6 +7,7 @@
   align-items: center;
   box-shadow: 6px 1px 5px 2px rgb(244 243 243);
   height: fit-content;
+  transition: all 0.5s ease-in;
 }
 .searchbar_wrapper input {
   background-color: transparent;
@@ -22,8 +23,12 @@
   color: #949493;
   font-size: 1.2rem;
 }
+.dark_mode-search {
+  background-color: rgb(40, 40, 40);
+  box-shadow: 6px 1px 5px 2px rgb(51, 49, 49);
+}
 @media only screen and (max-width: 900px) {
-  .searchbar_wrapper{
+  .searchbar_wrapper {
     width: 100%;
   }
 }

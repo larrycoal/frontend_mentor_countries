@@ -12,6 +12,7 @@
   background-color: white;
   box-shadow: 6px 1px 5px 2px rgb(244 243 243);
   border-radius: 5px;
+  transition: all 0.5s ease-in;
 }
 .filter_wrapper .options {
   list-style: none;
@@ -24,16 +25,25 @@
   position: absolute;
   top: 3.8rem;
   color: #5d5e5f;
+  transition: all 0.5s ease-in;
 }
-.filter_wrapper .options li{
-    padding: .8rem;
-    cursor: pointer;
+.filter_wrapper .options li {
+  padding: 0.8rem;
+  cursor: pointer;
 }
-.filter_wrapper .options li:hover{
-   background-color: rgba(0,0,0,0.1);
+.filter_wrapper .options li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.dark_mode-filter .select_box {
+  background-color: rgb(40, 40, 40);
+  box-shadow: 6px 1px 5px 2px rgb(51, 49, 49);
+}
+.dark_mode-filter .options {
+  background-color: rgb(40, 40, 40);
+  box-shadow: 6px 1px 5px 2px rgb(51, 49, 49);
 }
 @media only screen and (max-width: 900px) {
-  .filter_wrapper{
+  .filter_wrapper {
     width: 100%;
   }
 }

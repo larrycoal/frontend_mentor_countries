@@ -4,11 +4,12 @@ import Home from "./components/home"
 import './App.css'
 
 function App() {
+  const [darkmode, setMode] = useState(false);
 
   return (
     <>
-     <Header/>
-     <Home/>
+     <Header mode={darkmode} setMode={setMode}/>
+     <Home mode={darkmode}/>
     </>
   )
 }

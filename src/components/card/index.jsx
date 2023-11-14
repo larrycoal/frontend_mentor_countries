@@ -1,9 +1,9 @@
 import React from "react";
 import "./index.css";
-const index = ({ data }) => {
+const index = ({ data,mode }) => {
   return (
-    <div className="card_container">
-      <img src={data.flags.svg} alt="germany flag" />
+    <div className={!mode ? "card_container" : "dark_mode-card card_container"}>
+      <img src={data.flags.svg} alt={data.name.official + "country flag"} />
       <div className="details">
         <h2>{data.name.official}</h2>
         <p>
