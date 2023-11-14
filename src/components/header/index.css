@@ -10,3 +10,11 @@
     align-items: center;
     gap: 8px;
 }
+@media only screen and (max-width: 900px) {
+  .header_wrapper h2{
+    font-size: 1rem;
+  }
+  .header_wrapper p{
+    font-size: .8rem;
+  }
+}

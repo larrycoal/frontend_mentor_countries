@@ -80,7 +80,7 @@ const index = () => {
     return (
       <div className="card_wrapper">
         {countryData.length ? (
-          countryData.map((data) => <Card data={data} />)
+          countryData.map((data,idx) => <Card key={idx} data={data} />)
         ) : (
           <div className="error">
             <p>No country found</p>
