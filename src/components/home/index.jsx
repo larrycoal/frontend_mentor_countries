@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import SearchBar from "../searchbar";
 import Filter from "../filter";
+import Loader from "../../utils/loading";
 import Card from "../card";
 import "./index.css";
 
@@ -11,28 +12,29 @@ const index = () => {
   const [loading, setLoading] = useState(false);
   const handleFetchCountries = useCallback(async () => {
     try {
+      setLoading(true);
       const resp = await fetch(
         "https://restcountries.com/v3.1/all?fields=name,flags,capital,region,population"
       ).then((data) => data.json());
       if (resp) {
         setCountryData(resp);
+        setLoading(false);
       }
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   }, []);
   const handleFilterBySearch = useCallback(async (param) => {
     try {
-      setLoading(true);
+      //setLoading(true);
       const resp = await fetch(
         `https://restcountries.com/v3.1/name/${param}`
       ).then((data) => data.json());
       if (resp) {
         setCountryData(resp);
-        setLoading(false);
       } else {
         setCountryData([]);
-        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -97,7 +99,8 @@ const index = () => {
           onchange={handleFilter}
         />
       </div>
-        <ShowCountries />
+      {loading && <Loader />}
+      {!loading && <ShowCountries />}
     </div>
   );
 };
