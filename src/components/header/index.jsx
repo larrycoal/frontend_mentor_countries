@@ -15,7 +15,7 @@ const index = ({mode,setMode}) => {
               className={mode ? "active" : "hidden"}
             />
           </span>
-          <span>Dark Mode</span>
+          <span>{!mode ? "Dark Mode": "light mode"}</span>
         </p>
       </header>
     );
