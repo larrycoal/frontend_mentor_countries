@@ -3,6 +3,7 @@ import SearchBar from "../searchbar";
 import Filter from "../filter";
 import Loader from "../../utils/loading";
 import Card from "../card";
+import Detail from "../detail";
 import "./index.css";
 
 const index = ({ mode }) => {
@@ -10,12 +11,14 @@ const index = ({ mode }) => {
   const [countryData, setCountryData] = useState([]);
   const [searchParam, setSearchParam] = useState();
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState("all-countries");
+  const [detailData, setDetailData] = useState({});
   const handleFetchCountries = useCallback(async () => {
     try {
       setLoading(true);
-      const resp = await fetch(
-        "https://restcountries.com/v3.1/all?fields=name,flags,capital,region,population"
-      ).then((data) => data.json());
+      const resp = await fetch("https://restcountries.com/v3.1/all").then(
+        (data) => data.json()
+      );
       if (resp) {
         setCountryData(resp);
         setLoading(false);
@@ -75,12 +78,22 @@ const index = ({ mode }) => {
       console.log(error);
     }
   };
-
+  const handleShowDetailPage = (data) => {
+    setPage("detail");
+    setDetailData(data);
+  };
   const ShowCountries = () => {
     return (
       <div className="card_wrapper">
         {countryData.length ? (
-          countryData.map((data, idx) => <Card key={idx} data={data} mode={mode} />)
+          countryData.map((data, idx) => (
+            <Card
+              key={idx}
+              data={data}
+              mode={mode}
+              showDetail={handleShowDetailPage}
+            />
+          ))
         ) : (
           <div className="error">
             <p>No country found</p>
@@ -101,7 +114,8 @@ const index = ({ mode }) => {
         />
       </div>
       {loading && <Loader />}
-      {!loading && <ShowCountries />}
+      {!loading & (page === "all-countries") && <ShowCountries />}
+      {!loading & (page === "detail") && <Detail goBack={()=>setPage("all-countries")} data={detailData} />}
     </div>
   );
 };
