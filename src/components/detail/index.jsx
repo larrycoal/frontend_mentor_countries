@@ -2,10 +2,12 @@ import React from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import "./index.css";
 
-const index = ({ data, goBack }) => {
+const index = ({ data, goBack,mode }) => {
   console.log(goBack, data);
   return (
-    <div className="detail_wrapper">
+    <div
+      className={!mode ? "detail_wrapper" : "dark_mode-detail detail_wrapper"}
+    >
       <div className="top">
         <div onClick={goBack}>
           <span>

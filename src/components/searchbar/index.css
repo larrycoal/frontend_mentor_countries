@@ -25,7 +25,7 @@
 }
 .dark_mode-search {
   background-color: rgb(40, 40, 40);
-  box-shadow: 6px 1px 5px 2px rgb(51, 49, 49);
+  box-shadow: 1px 1px 10px 3px rgb(41 40 40);
 }
 @media only screen and (max-width: 900px) {
   .searchbar_wrapper {
