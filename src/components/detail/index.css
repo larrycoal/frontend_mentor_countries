@@ -55,6 +55,7 @@
 }
 .detail_wrapper .bottom .right div p span:nth-child(1) {
   font-weight: bold;
+  margin-right: 5px;
 }
 @media only screen and (max-width: 900px) {
     .detail_wrapper{
