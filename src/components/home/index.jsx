@@ -104,15 +104,17 @@ const index = ({ mode }) => {
   };
   return (
     <div className={!mode ? "home_wrapper" : "dark_mode-home home_wrapper"}>
-      <div className="action_block">
-        <SearchBar onchange={handleSearch} mode={mode} />
-        <Filter
-          setShowOpts={handleCloseOpt}
-          showOpts={showOpts}
-          onchange={handleFilter}
-          mode={mode}
-        />
-      </div>
+      {page === "all-countries" && (
+        <div className="action_block">
+          <SearchBar onchange={handleSearch} mode={mode} />
+          <Filter
+            setShowOpts={handleCloseOpt}
+            showOpts={showOpts}
+            onchange={handleFilter}
+            mode={mode}
+          />
+        </div>
+      )}
       {loading && <Loader />}
       {!loading & (page === "all-countries") && <ShowCountries />}
       {!loading & (page === "detail") && (
