@@ -65,7 +65,7 @@ const index = ({ data, goBack,mode }) => {
           <div>
             <p>
               <span>Border Countries:</span>
-              <span>{data.borders?.join(", ")}</span>
+              <span className="border_wrapper">{data.borders?.map((border)=>(<span>{border}</span>))}</span>
             </p>
           </div>
         </div>
