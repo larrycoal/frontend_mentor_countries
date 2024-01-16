@@ -116,8 +116,8 @@ const index = ({ mode }) => {
         </div>
       )}
       {loading && <Loader />}
-      {!loading & (page === "all-countries") && <ShowCountries />}
-      {!loading & (page === "detail") && (
+      {!loading && (page === "all-countries") && <ShowCountries />}
+      {!loading && (page === "detail") && (
         <Detail
           goBack={() => setPage("all-countries")}
           data={detailData}

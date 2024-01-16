@@ -2,6 +2,7 @@
   width: 15rem;
   background-color: transparent;
   position: relative;
+  z-index: 2;
 }
 .filter_wrapper .select_box {
   display: flex;
